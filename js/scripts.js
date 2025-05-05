@@ -84,4 +84,17 @@ document.addEventListener("DOMContentLoaded", function () {
     chart.data.datasets[0].data = incomeData;
     chart.data.datasets[1].data = expensesData;
     chart.update();
+
+    // Add download functionality
+    document.getElementById('downloadBtn').addEventListener('click', function () {
+        const canvas = document.getElementById('barChart');
+        const image = canvas.toDataURL('image/png'); // Convert canvas to image data URL
+
+        // Create a temporary <a> element to trigger the download
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'chart.png'; // Set the default file name
+        link.click(); // Trigger the download
+    });
 });
+
